@@ -85,8 +85,9 @@
         "campaign_id": "120248325986010412",
         "name": "New Leads campaign (messaging / conversations)",
         "ad_set_id": "120248325986000412",
-        "cpl_source": "meta_cost_per_result",
-        "comment": "Messaging leads do NOT land in the Google Sheet, so use Meta's reported cost per result / cost_per_lead for this campaign."
+        "metric_source": "meta_dashboard",
+        "metric_fields": ["spend", "results", "cost_per_result"],
+        "comment": "Messaging conversations do NOT land in the Google Sheet. Read them STRAIGHT FROM META's dashboard metrics: `results` = messaging conversations started, `cost_per_result` = cost per conversation. Do NOT use cost_per_lead or derive from spend — that gave a wrong number (₹407/2 vs the true ₹81.37/10 on 2026-07-16)."
       }
     ]
   },

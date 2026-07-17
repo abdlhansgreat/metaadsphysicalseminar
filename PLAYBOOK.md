@@ -117,8 +117,11 @@ ACTION
 ```
 
 - Lead campaign → CPL = Meta spend ÷ sheet leads (UTM attribution), per ad set.
-- Messaging campaign (`120248325986010412`) → conversations & cost/conversation from Meta's
-  reported results / cost_per_result (these leads are NOT in the sheet).
+- Messaging campaign (`120248325986010412`) → read STRAIGHT FROM META (the dashboard numbers):
+  query `ads_get_ad_entities` with fields `spend`, `results`, `cost_per_result`. `results` =
+  "Messaging conversations started", `cost_per_result` = cost per conversation. **Never** use
+  `cost_per_lead` or derive conversations from spend — that is wrong (it gave ₹407/2 instead of
+  the true ₹81.37/10). What the report shows must equal what Ads Manager shows.
 
 ### Autonomy (per `approval.rules`)
 - Adding / pushing new creatives into a target ad set is AUTONOMOUS — do it, then report it under "Done automatically".
