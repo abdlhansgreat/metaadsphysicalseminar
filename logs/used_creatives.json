@@ -1,7 +1,7 @@
 {
   "used": [
-    { "city": "Lucknow", "drive_file_id": "1oNd0INlrx1vW3dbHL2iyDWbuyHLwhJAb", "repo_path": "creatives/lucknow-1.png", "creative_id": "1780127723157543", "ad_id": "120250135202780412", "launched": "2026-07-17" },
-    { "city": "Lucknow", "drive_file_id": "1jyhkxXTEOxwmpzAh-BkYZ3rpwhIP6WPQ", "repo_path": "creatives/lucknow-2.png", "creative_id": "1448628407072970", "ad_id": "120250135216220412", "launched": "2026-07-17" },
-    { "city": "Lucknow", "drive_file_id": "1hqIPRORlyr4OjjNI4qokkHxfQ9eEOUlw", "repo_path": "creatives/lucknow-3.png", "creative_id": "1596462508539378", "ad_id": "120250135216720412", "launched": "2026-07-17" }
+    { "city": "Lucknow", "drive_file_id": "1oNd0INlrx1vW3dbHL2iyDWbuyHLwhJAb", "repo_path": "creatives/lucknow-1.png", "creative_id": "1728455711818978", "ad_id": "120250135445030412", "placements": "FB+IG", "launched": "2026-07-17", "superseded_fb_only_ad_id": "120250135202780412" },
+    { "city": "Lucknow", "drive_file_id": "1jyhkxXTEOxwmpzAh-BkYZ3rpwhIP6WPQ", "repo_path": "creatives/lucknow-2.png", "creative_id": "3997867800517646", "ad_id": "120250135446090412", "placements": "FB+IG", "launched": "2026-07-17", "superseded_fb_only_ad_id": "120250135216220412" },
+    { "city": "Lucknow", "drive_file_id": "1hqIPRORlyr4OjjNI4qokkHxfQ9eEOUlw", "repo_path": "creatives/lucknow-3.png", "creative_id": "1053807563829024", "ad_id": "120250135447050412", "placements": "FB+IG", "launched": "2026-07-17", "superseded_fb_only_ad_id": "120250135216720412" }
   ]
 }
