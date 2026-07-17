@@ -152,7 +152,11 @@
   "schedule": {
     "run_local_time": "09:10",
     "run_window": "09:00-10:00",
-    "timezone": "Asia/Kolkata"
+    "timezone": "Asia/Kolkata",
+    "routine_trigger_id": "trig_01U7ZGLKuPk4NbbmGvRgN4MB",
+    "routine_cron_utc": "40 3 * * *",
+    "routine_mode": "self-bind to session_011oVDoaa21xaSyfmMVgVUhS (carries the connectors)",
+    "_note": "Daily Routine fires 09:10 IST. If a fired run ever reports connectors missing, recreate the Routine from claude.ai -> Routines UI with Meta/Drive/Gmail/Unipile attached (guaranteed)."
   },
 
   "safety": {
