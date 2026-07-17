@@ -20,7 +20,7 @@
     ],
     "page_id": "102609998534369",
     "instagram_user_id": "",
-    "link_url": "TODO_REGISTRATION_OR_LANDING_URL_confirm",
+    "link_url": "https://lp.ipcstudiogrowth.in/ipc-1/",
     "call_to_action_type": "SEE_DETAILS",
     "_note": "New daily ads are created INSIDE the target ad sets, so they share each ad set's existing ~500 INR/day budget and inherit its targeting. The agent does not add budget without approval."
   },
@@ -44,11 +44,18 @@
 
   "leads_source": {
     "type": "google_sheet",
-    "sheet_file_id": "TODO_GOOGLE_SHEET_FILE_ID",
-    "sheet_tab_name": "TODO_TAB_NAME_or_leave_blank_for_first_tab",
-    "date_column_header": "TODO_e.g._Date or Timestamp",
-    "date_format": "TODO_e.g._DD/MM/YYYY or ISO",
-    "campaign_or_source_column_header": ""
+    "sheet_file_id": "1y80Eg_ynvpkBxKBe-UUraYX8HXBh2Cg-qyIjeZXHDRM",
+    "sheet_tab_name": "",
+    "date_column_header": "Timestamp",
+    "date_format": "ISO8601_UTC",
+    "convert_to_timezone": "Asia/Kolkata",
+    "attribution": {
+      "campaign_id_column": "UTM Campaign",
+      "adset_id_column": "UTM Term",
+      "ad_id_column": "UTM Content",
+      "only_count_campaign_id": "120249797872700412"
+    },
+    "_note": "Leads carry Meta IDs via UTM tags, so the agent counts leads per ad set (UTM Term) and per ad (UTM Content), and only for our campaign (UTM Campaign = 120249797872700412). Timestamp is UTC (Z) and is shifted to Asia/Kolkata before bucketing by day."
   },
 
   "creatives": {

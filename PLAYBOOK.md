@@ -15,25 +15,32 @@ missing fields instead of running. Everything below uses values from that file.
 
 Set `TODAY` and `YESTERDAY` in the account timezone (`account.timezone`).
 
-## Step 1 — Pull yesterday's performance from Meta
-Use `ads_get_ad_entities` on `account.ad_account_id`:
-- `level: "adset"` (and `level: "ad"` for the breakdown), `date_preset: "yesterday"`
-- fields: `id`, `name`, `spend`, `cost_per_lead`, and the lead action count.
-Record per-ad and per-ad-set: **spend, leads, CPL**.
+## Step 1 — Pull yesterday's spend from Meta (per ad set AND per ad)
+Use `ads_get_ad_entities` on `account.ad_account_id`, scoped to `campaign.campaign_id`:
+- `level: "ad"` and `level: "adset"`, `date_preset: "yesterday"`
+- fields: `id`, `name`, `adset_id`, `spend`.
+Record **spend per ad set** and **spend per ad**. (Meta's own `cost_per_lead` can differ from
+your sheet's truth — spend is what we take from Meta; leads come from the sheet.)
 
 ## Step 2 — Count leads from the source of truth (the sheet)
-Read `leads_source.sheet_file_id` with the Google Drive tool. Count rows where the
-`date_column_header` equals `YESTERDAY` (parse using `date_format`). This sheet count is the
-**official lead number**. Compute `CPL_actual = yesterday_spend / sheet_leads`
-(if `sheet_leads` is 0, CPL is treated as "infinite / no leads").
+Read `leads_source.sheet_file_id` with the Google Drive tool. The sheet is UTM-tagged, so:
+- Keep only rows where `attribution.campaign_id_column` (**UTM Campaign**) ==
+  `attribution.only_count_campaign_id`.
+- Convert each row's `date_column_header` (**Timestamp**, ISO-8601 UTC) into
+  `leads_source.convert_to_timezone` and keep rows whose local date == `YESTERDAY`.
+- Bucket the leads by `attribution.adset_id_column` (**UTM Term** = ad set) and
+  `attribution.ad_id_column` (**UTM Content** = ad).
+This gives **leads per ad set** and **leads per ad** — the official numbers.
 
-## Step 3 — Judge CPL
-Only judge if there is enough signal:
+## Step 3 — Compute CPL per ad and per ad set, then judge
+For each ad (and ad set): `CPL = yesterday_spend / sheet_leads` (0 leads → treat as "no leads /
+infinite CPL"). Only judge an entity if it has enough signal:
 - `sheet_leads >= cpl_rules.min_leads_before_judging` **or**
-  `yesterday_spend >= cpl_rules.min_spend_before_judging_inr`.
-Otherwise mark **"not enough data, keep running"** and skip the breach action.
+  `spend >= cpl_rules.min_spend_before_judging_inr`.
+Otherwise mark it **"not enough data, keep running."**
 
-Breach = `CPL_actual > cpl_rules.target_cpl_inr` (and hard breach if above `hard_ceiling_cpl_inr`).
+Breach = `CPL > cpl_rules.target_cpl_inr` (hard breach above `hard_ceiling_cpl_inr`). Because the
+sheet carries the ad ID, you can name the **exact ad** whose CPL crossed the line.
 
 ## Step 4 — Decide today's actions (do NOT execute yet)
 Assemble a **proposal**:
