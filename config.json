@@ -113,13 +113,14 @@
   "whatsapp_report": {
     "enabled": true,
     "provider": "unipile",
-    "sender_account_id": "_6G6Qjb8TiaAa7Fd0KHNlA",
+    "sender_account_id": "lp24IfLWTjSj1NAqSm3-Lw",
+    "sender_account_id_old_stale": "_6G6Qjb8TiaAa7Fd0KHNlA",
     "sender_phone": "919109192065",
-    "sender_status_note": "As of 2026-07-17 this account shows status CREDENTIALS in Unipile (needs QR re-scan) and lists no chats. Reconnect it before sending.",
+    "sender_status_note": "Reconnected 2026-07-17T09:13 (status OK). New Unipile account_id is lp24IfLWTjSj1NAqSm3-Lw — always use this one, not the old stale _6G6... id.",
     "destination_type": "group",
     "destination_group_name": "Seminar Daily Reporting",
-    "destination_chat_id": "TODO_resolve_after_reconnect (list_chats on sender_account_id, match group name)",
-    "_note": "Send the daily report to the 'Seminar Daily Reporting' WhatsApp group (member: 919109192065). Resolve the group's chat_id via list_chats once the sender account is reconnected, then send with send_message."
+    "destination_chat_id": "TODO_resolve (group not yet synced — list_chats on sender_account_id and match name 'Seminar Daily Reporting' once a message has been sent in the group)",
+    "_note": "Send the daily report to the 'Seminar Daily Reporting' WhatsApp group (member: 919109192065). If the group chat_id is not yet resolved, list_chats on the sender account and match by name. Retry on transient 'provider_unreachable' errors (common right after reconnect)."
   },
 
   "approval": {
