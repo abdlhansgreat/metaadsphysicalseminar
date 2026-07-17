@@ -95,6 +95,12 @@ launch a Drive graphic, host it at a public URL Meta can fetch:
    `ads_activate_entity` to make it live. Record file→creative_id→ad_id in
    `logs/used_creatives.json`.
 
+**Page ad-limit fallback:** after activating, check the ad's `effective_status`. If it comes back
+`WITH_ISSUES` because the `pages.primary_page_id` hit its ad limit, recreate the SAME creative with
+`pages.fallback_page_id` (Bihar Wedding Photography) and relaunch. The fallback page has no linked
+Instagram accessible to this account, so fallback ads are **Facebook-only** (omit `instagram_user_id`).
+Leave the blocked primary-page ad paused. Note the page switch in the report and the log.
+
 ### Reporting scope + FORMAT (send this every day)
 Report per ad set for EVERY campaign in `monitoring.report_campaigns`. Use exactly this layout:
 
