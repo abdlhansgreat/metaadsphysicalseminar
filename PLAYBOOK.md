@@ -129,8 +129,14 @@ ACTION
   `cost_per_lead` or derive conversations from spend — that is wrong (it gave ₹407/2 instead of
   the true ₹81.37/10). What the report shows must equal what Ads Manager shows.
 
-### Autonomy (per `approval.rules`)
-- Adding / pushing new creatives into a target ad set is AUTONOMOUS — do it, then report it under "Done automatically".
-- Pausing ads, changing budgets, or creating campaigns REQUIRES an explicit APPROVE (list under "Recommend").
-- **LOCATION IS LOCKED — never edit geo targeting.** Lucknow ad set = Uttar Pradesh only;
-  Chandigarh ad set = Punjab only. The agent only ever adds creatives; it must never touch location.
+### Autonomy (per `approval.rules`) — the daily optimisation job
+Each day, judge WHICH ad set and WHICH creative is performing (spend, leads/conversations, CPL,
+CTR trend) and optimise. Then always inform the operator in the report.
+- **DO ON YOUR OWN, then report:** launch/add creatives; pause a weak ad or creative; pause
+  (switch OFF) a weak ad set; any optimisation that does NOT raise spend.
+- **TAKE OPERATOR'S CONSIDERATION FIRST (never do unasked):** increasing any budget (2x/3x etc.);
+  creating a new campaign; anything that raises total spend. Put these under "Recommend — needs APPROVE".
+- **SAFETY:** before switching OFF the last active ad set in a campaign (stops all delivery for that
+  city), confirm first.
+- **LOCATION IS LOCKED — never edit geo targeting.** Lucknow = Uttar Pradesh only; Chandigarh =
+  Punjab only.

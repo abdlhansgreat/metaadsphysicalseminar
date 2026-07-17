@@ -111,13 +111,26 @@
   },
 
   "approval": {
-    "flow": "autonomous_creative_push_with_reporting",
-    "notify_channel": "gmail",
+    "flow": "autonomous_optimisation_with_reporting",
+    "notify_channels": ["gmail", "whatsapp"],
     "notify_email": "connect@wpbmastery.in",
     "rules": {
-      "add_or_push_creatives": "AUTONOMOUS — the agent may add/launch new ad creatives into a target ad set on its own when it judges more creatives are needed, then report what it did. New ads share the ad set's existing budget (no new spend added).",
-      "pause_ads_or_change_budget_or_new_campaign": "REQUIRES APPROVAL — the agent proposes and waits for the operator to reply APPROVE.",
-      "daily_report": "ALWAYS sent — CPL per ad set for every campaign in monitoring.report_campaigns."
+      "autonomous_then_inform": [
+        "Launch / add new ad creatives into an ad set.",
+        "Pause (switch OFF) an under-performing ad or creative.",
+        "Pause (switch OFF) an under-performing ad SET.",
+        "Any other within-account optimisation that does NOT raise spend."
+      ],
+      "requires_operator_approval_first": [
+        "INCREASING any budget (e.g. 2x/3x an ad set or campaign budget) — always take the operator's consideration first.",
+        "Creating a brand-new campaign.",
+        "Anything that increases total spend."
+      ],
+      "never_allowed": [
+        "Changing geo/location targeting (Lucknow=UP, Chandigarh=Punjab — hard-locked)."
+      ],
+      "safety_confirm_first": "Before switching OFF the LAST active ad set in a campaign (which would stop ALL delivery for that city), confirm with the operator first.",
+      "daily_report": "ALWAYS sent every morning — per ad set: spend, leads, CPL (lead campaign) and spend, conversations, cost/conversation (messaging). Plus which ad sets/creatives are winning and what was optimised."
     }
   },
 
@@ -131,8 +144,10 @@
     "max_new_ads_per_day_per_adset": 3,
     "max_daily_spend_change_inr": 1000,
     "never_touch_campaign_ids": [],
-    "require_approval_for_spend_change_or_pause": true,
+    "require_approval_for_budget_increase": true,
+    "pausing_ads_or_adsets_allowed_without_approval": true,
     "creative_push_is_allowed_without_approval": true,
+    "confirm_before_pausing_last_active_adset": true,
     "never_change_location_targeting": true,
     "location_lock": { "Lucknow_adset_120249797872690412": "Uttar Pradesh only", "Chandigarh_adset_120249894252900412": "Punjab only" }
   }
