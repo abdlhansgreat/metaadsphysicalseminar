@@ -1,3 +1,7 @@
 {
-  "used": []
+  "used": [
+    { "city": "Lucknow", "drive_file_id": "1oNd0INlrx1vW3dbHL2iyDWbuyHLwhJAb", "repo_path": "creatives/lucknow-1.png", "creative_id": "1780127723157543", "ad_id": "120250135202780412", "launched": "2026-07-17" },
+    { "city": "Lucknow", "drive_file_id": "1jyhkxXTEOxwmpzAh-BkYZ3rpwhIP6WPQ", "repo_path": "creatives/lucknow-2.png", "creative_id": "1448628407072970", "ad_id": "120250135216220412", "launched": "2026-07-17" },
+    { "city": "Lucknow", "drive_file_id": "1hqIPRORlyr4OjjNI4qokkHxfQ9eEOUlw", "repo_path": "creatives/lucknow-3.png", "creative_id": "1596462508539378", "ad_id": "120250135216720412", "launched": "2026-07-17" }
+  ]
 }

@@ -82,9 +82,25 @@ and (if executed) the resulting entity IDs. Commit the log back to the repo so h
 
 ---
 
-### Creative → Meta note
-Meta needs the image/video in the ad account's library. Two supported paths:
-- The creative file is reachable by a public `image_url`, **or**
-- It has been uploaded to the ad account (an `image_hash` / `video_id` exists).
-If neither is true for the chosen Drive file, the proposal must say so and ask the operator to
-stage it, rather than failing silently.
+### Creative → Meta bridge (PROVEN 2026-07-17)
+Meta CANNOT fetch Google Drive links, and the Meta connector has NO image-upload tool. So to
+launch a Drive graphic, host it at a public URL Meta can fetch:
+1. `download_file_content` the Drive image, decode the base64 **to a local file with a shell
+   command** (do NOT pull 2 MB of base64 through the model context).
+2. `git add` the file under `creatives/` and push to the public repo
+   (`image_hosting.public_repo`, branch `image_hosting.branch`).
+3. Use the raw URL `image_hosting.raw_url_pattern` as `image_url` in `ads_create_creative`.
+   Meta fetches raw.githubusercontent.com fine.
+4. `ads_create_ad` with the returned `creative_id` under the target ad set, then
+   `ads_activate_entity` to make it live. Record file→creative_id→ad_id in
+   `logs/used_creatives.json`.
+
+### Reporting scope
+The daily report covers CPL per ad set for EVERY campaign in `monitoring.report_campaigns`:
+- Lead campaign → CPL from the sheet (UTM attribution).
+- Messaging campaign (`120248325986010412`) → CPL from Meta's cost per result (those leads are
+  not in the sheet).
+
+### Autonomy (per `approval.rules`)
+- Adding / pushing new creatives into a target ad set is AUTONOMOUS — do it, then report.
+- Pausing ads, changing budgets, or creating campaigns REQUIRES an explicit APPROVE.

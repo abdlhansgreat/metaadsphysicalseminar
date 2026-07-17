@@ -71,22 +71,55 @@
     "_note": "CITY-LOCKED: a Lucknow ad set may ONLY use images from the Lucknow folder; Chandigarh ONLY from the Chandigarh folder. Never cross them. Each ad set's creatives_folder_id (in campaign.target_ad_sets) is authoritative."
   },
 
+  "monitoring": {
+    "_note": "Every day the agent REPORTS CPL per ad set for ALL campaigns below, not just the lead campaign.",
+    "report_campaigns": [
+      {
+        "campaign_id": "120249797872700412",
+        "name": "Lead Campaign - Lucknow Workshop",
+        "cpl_source": "google_sheet",
+        "comment": "CPL = Meta spend / sheet leads, per ad set and per ad (UTM attribution)."
+      },
+      {
+        "campaign_id": "120248325986010412",
+        "name": "New Leads campaign (messaging / conversations)",
+        "ad_set_id": "120248325986000412",
+        "cpl_source": "meta_cost_per_result",
+        "comment": "Messaging leads do NOT land in the Google Sheet, so use Meta's reported cost per result / cost_per_lead for this campaign."
+      }
+    ]
+  },
+
+  "image_hosting": {
+    "_note": "Meta CANNOT fetch Google Drive links directly, and the Meta connector has no image-upload tool. Bridge: the agent decodes each Drive creative locally (never through the model context) and commits it to this PUBLIC repo under creatives/, then hands Meta the raw.githubusercontent.com URL, which Meta CAN fetch. Proven working 2026-07-17.",
+    "public_repo": "abdlhansgreat/metaadsphysicalseminar",
+    "branch": "claude/meta-ads-tracking-auto-launch-husdny",
+    "raw_url_pattern": "https://raw.githubusercontent.com/abdlhansgreat/metaadsphysicalseminar/claude/meta-ads-tracking-auto-launch-husdny/creatives/{filename}",
+    "repo_is_public_warning": "Because this repo is public, config.json (ad account / campaign IDs, landing URL) is publicly visible. Consider moving creative hosting to a dedicated public repo and making this config repo private."
+  },
+
   "approval": {
-    "flow": "propose_then_approve",
+    "flow": "autonomous_creative_push_with_reporting",
     "notify_channel": "gmail",
     "notify_email": "connect@wpbmastery.in",
-    "approval_wait": "The agent stops after sending the proposal. It only creates/changes ads on the next run (or an immediate reply) where you have written APPROVE."
+    "rules": {
+      "add_or_push_creatives": "AUTONOMOUS — the agent may add/launch new ad creatives into a target ad set on its own when it judges more creatives are needed, then report what it did. New ads share the ad set's existing budget (no new spend added).",
+      "pause_ads_or_change_budget_or_new_campaign": "REQUIRES APPROVAL — the agent proposes and waits for the operator to reply APPROVE.",
+      "daily_report": "ALWAYS sent — CPL per ad set for every campaign in monitoring.report_campaigns."
+    }
   },
 
   "schedule": {
     "run_local_time": "09:10",
+    "run_window": "09:00-10:00",
     "timezone": "Asia/Kolkata"
   },
 
   "safety": {
-    "max_new_ads_per_day": 1,
+    "max_new_ads_per_day_per_adset": 3,
     "max_daily_spend_change_inr": 1000,
     "never_touch_campaign_ids": [],
-    "require_approval_for_any_spend_change": true
+    "require_approval_for_spend_change_or_pause": true,
+    "creative_push_is_allowed_without_approval": true
   }
 }
