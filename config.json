@@ -2,34 +2,40 @@
   "_README": "This is the control panel for the daily Meta Ads automation. Fill in every value marked TODO. All money values are in INR (whole rupees unless noted). The daily agent reads THIS file first, every run.",
 
   "account": {
-    "ad_account_id": "TODO_AD_ACCOUNT_ID",
-    "ad_account_name": "TODO_NAME_FOR_LOGS",
+    "ad_account_id": "26893427890242195",
+    "ad_account_name": "Workshop Ad Account",
+    "business_id": "704641690765363",
     "currency": "INR",
     "timezone": "Asia/Kolkata"
   },
 
   "campaign": {
     "mode": "existing",
-    "campaign_id": "TODO_CAMPAIGN_ID_OR_LEAVE_BLANK",
-    "ad_set_id": "TODO_ADSET_ID_new_ads_are_created_under_this",
-    "page_id": "TODO_FACEBOOK_PAGE_ID",
-    "instagram_user_id": "",
+    "campaign_id": "120249797872700412",
+    "campaign_name": "Lead Campaign - Lucknow Workshop",
     "objective": "OUTCOME_LEADS",
-    "link_url": "TODO_LANDING_PAGE_OR_LEAD_FORM_URL",
-    "call_to_action_type": "SIGN_UP"
+    "target_ad_sets": [
+      { "ad_set_id": "120249894252900412", "label": "Chandigarh | Image", "adset_daily_budget_inr": 500 },
+      { "ad_set_id": "120249797872690412", "label": "Lucknow | Image", "adset_daily_budget_inr": 500 }
+    ],
+    "page_id": "102609998534369",
+    "instagram_user_id": "",
+    "link_url": "TODO_REGISTRATION_OR_LANDING_URL_confirm",
+    "call_to_action_type": "SEE_DETAILS",
+    "_note": "New daily ads are created INSIDE the target ad sets, so they share each ad set's existing ~500 INR/day budget and inherit its targeting. The agent does not add budget without approval."
   },
 
   "daily_new_ad": {
     "enabled": true,
-    "daily_budget_inr": 500,
-    "naming_pattern": "AutoAd {date}",
-    "message": "TODO_DEFAULT_PRIMARY_TEXT_for_new_ads",
-    "headline": "TODO_DEFAULT_HEADLINE"
+    "naming_pattern": "AutoAd {city} {date}",
+    "reuse_proven_copy": true,
+    "message": "Ek wedding photographer ne mujhse poochha — \"Abdullah bhai, main har weekend shoot karta hoon, phir bhi month end pe paisa nahi bachta. Kyun?\"\n\nKyunki photography seekhna aur photography business banana — dono bilkul alag cheezein hain.\n\nPehli baar {city} mein ek physical workshop aa rahi hai, specifically wedding photographers ke liye. Seats limited hain.\n\n👉 Call/WhatsApp: 8210515506",
+    "headline": "Wedding Photography se 1 Crore — possible hai, agar sahi plan ho"
   },
 
   "cpl_rules": {
-    "target_cpl_inr": 300,
-    "hard_ceiling_cpl_inr": 500,
+    "target_cpl_inr": 60,
+    "hard_ceiling_cpl_inr": 120,
     "min_leads_before_judging": 3,
     "min_spend_before_judging_inr": 300,
     "lookback_days_for_cpl": 1,
