@@ -31,8 +31,9 @@
     "primary_supports_instagram": true,
     "fallback_page_id": "2087950798091932",
     "fallback_page_name": "Bihar Wedding Photography",
-    "fallback_supports_instagram": false,
-    "_note": "When the primary page hits its Meta ad-limit (new ad shows effective_status WITH_ISSUES / 'ad limit reached'), relaunch the same creative on the fallback page. The fallback page has NO linked Instagram accessible to this ad account, so fallback ads run Facebook-only until an IG is linked to it. On 2026-07-17 the primary page hit its limit and Lucknow creatives 2 & 3 were relaunched on the Bihar page."
+    "fallback_supports_instagram": true,
+    "fallback_instagram_user_id": "17841431028601139",
+    "_note": "When the primary page hits its Meta ad-limit (new ad shows effective_status WITH_ISSUES / 'ad limit reached'), relaunch the same creative on the fallback page. Use fallback_instagram_user_id (17841431028601139) for IG on Bihar-page ads — the primary page's IG (17841448483484680) is NOT accessible from the Bihar page. On 2026-07-17 the primary page hit its limit and Lucknow creatives 2 & 3 were relaunched on the Bihar page with its own IG (FB+IG)."
   },
 
   "daily_new_ad": {
