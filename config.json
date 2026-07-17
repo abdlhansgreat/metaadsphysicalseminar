@@ -60,7 +60,7 @@
 
   "creatives": {
     "type": "google_drive_folder",
-    "drive_folder_id": "TODO_DRIVE_FOLDER_ID_containing_ad_images_or_videos",
+    "drive_folder_id": "1ikWNeF_U1VtamXrLD-otpDQKmR29l0Wc",
     "selection_order": "oldest_unused_first",
     "used_creatives_log": "logs/used_creatives.json"
   },
