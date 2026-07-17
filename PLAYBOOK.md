@@ -45,12 +45,18 @@ sheet carries the ad ID, you can name the **exact ad** whose CPL crossed the lin
 ## Step 4 — Decide today's actions (do NOT execute yet)
 Assemble a **proposal**:
 
-1. **New ad for today** (`daily_new_ad.enabled`): pick the next creative from the Drive
-   folder (`creatives.drive_folder_id`) using `selection_order`, skipping anything already in
-   `logs/used_creatives.json`. Propose creating one new ad under `campaign.ad_set_id` with
-   `daily_new_ad.daily_budget_inr`.
+1. **New ad for today** (`daily_new_ad.enabled`): for each target ad set in
+   `campaign.target_ad_sets`, pick the next unused image from **that ad set's own
+   `creatives_folder_id`** (its city folder), using `selection_order` and skipping anything in
+   `logs/used_creatives.json`. Propose creating one new ad **inside that same ad set** (it shares
+   the ad set's existing daily budget — no budget is added).
+   - **CITY-LOCK (hard rule):** a Lucknow ad set may use ONLY Lucknow-folder images; a Chandigarh
+     ad set ONLY Chandigarh-folder images. Never use an image from the other city's folder.
+   - If a city's folder is empty (e.g. Chandigarh has no graphics yet), skip that city and say so
+     in the proposal — do not substitute another city's image.
 2. **If CPL breached** (`on_breach: swap_creative`): identify the highest-CPL ad above target
-   with enough spend, and propose **pausing it** and launching a **fresh creative** in its place.
+   with enough spend, and propose **pausing it** and launching a **fresh creative from the same
+   city's folder** in its place.
 3. Respect `safety` caps (max new ads/day, max spend change, never-touch list).
 
 ## Step 5 — Send the proposal for approval

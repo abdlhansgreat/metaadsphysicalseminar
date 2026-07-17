@@ -15,8 +15,8 @@
     "campaign_name": "Lead Campaign - Lucknow Workshop",
     "objective": "OUTCOME_LEADS",
     "target_ad_sets": [
-      { "ad_set_id": "120249894252900412", "label": "Chandigarh | Image", "adset_daily_budget_inr": 500 },
-      { "ad_set_id": "120249797872690412", "label": "Lucknow | Image", "adset_daily_budget_inr": 500 }
+      { "ad_set_id": "120249894252900412", "label": "Chandigarh | Image", "city": "Chandigarh", "adset_daily_budget_inr": 500, "creatives_folder_id": "15j93JApZMF7wsPKtWLJPVuKqhK4yEdT-" },
+      { "ad_set_id": "120249797872690412", "label": "Lucknow | Image", "city": "Lucknow", "adset_daily_budget_inr": 500, "creatives_folder_id": "1iB_YbZiz-3ms-2pZrOw4T6rmoYZI1sY1" }
     ],
     "page_id": "102609998534369",
     "instagram_user_id": "",
@@ -59,10 +59,16 @@
   },
 
   "creatives": {
-    "type": "google_drive_folder",
-    "drive_folder_id": "1ikWNeF_U1VtamXrLD-otpDQKmR29l0Wc",
+    "type": "google_drive_city_folders",
+    "parent_folder_id": "1ikWNeF_U1VtamXrLD-otpDQKmR29l0Wc",
+    "city_locked": true,
+    "folders_by_city": {
+      "Lucknow": "1iB_YbZiz-3ms-2pZrOw4T6rmoYZI1sY1",
+      "Chandigarh": "15j93JApZMF7wsPKtWLJPVuKqhK4yEdT-"
+    },
     "selection_order": "oldest_unused_first",
-    "used_creatives_log": "logs/used_creatives.json"
+    "used_creatives_log": "logs/used_creatives.json",
+    "_note": "CITY-LOCKED: a Lucknow ad set may ONLY use images from the Lucknow folder; Chandigarh ONLY from the Chandigarh folder. Never cross them. Each ad set's creatives_folder_id (in campaign.target_ad_sets) is authoritative."
   },
 
   "approval": {

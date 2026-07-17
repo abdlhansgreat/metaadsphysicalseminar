@@ -30,8 +30,11 @@ specific prior proposal. Reading data is always allowed.
    bucket by UTM Term (ad set) and UTM Content (ad).
 4. CPL per ad = spend / leads; compare to target ₹60 / ceiling ₹120. Judge only ads with >=3
    leads or >=₹300 spend.
-5. Pick the next unused creative from Drive folder 1ikWNeF_U1VtamXrLD-otpDQKmR29l0Wc (skip those
-   in logs/used_creatives.json).
+5. For each target ad set, pick the next unused image from THAT ad set's own city folder
+   (Lucknow ad set -> Lucknow folder 1iB_YbZiz-3ms-2pZrOw4T6rmoYZI1sY1; Chandigarh ad set ->
+   Chandigarh folder 15j93JApZMF7wsPKtWLJPVuKqhK4yEdT-), skipping anything in
+   logs/used_creatives.json. CITY-LOCK: never use one city's image for the other's ad set. Skip a
+   city whose folder is empty.
 6. Write logs/<yesterday>.md and commit+push to the feature branch.
 7. Email connect@wpbmastery.in via Gmail with the per-ad CPL table, the plan to launch today's
    fresh ad, and any creative-swap recommendation (name the exact ad if CPL > ₹60). End with
