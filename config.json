@@ -119,8 +119,10 @@
     "sender_status_note": "Reconnected 2026-07-17T09:13 (status OK). New Unipile account_id is lp24IfLWTjSj1NAqSm3-Lw — always use this one, not the old stale _6G6... id.",
     "destination_type": "group",
     "destination_group_name": "Seminar Daily Reporting",
-    "destination_chat_id": "TODO_resolve (group not yet synced — list_chats on sender_account_id and match name 'Seminar Daily Reporting' once a message has been sent in the group)",
-    "_note": "Send the daily report to the 'Seminar Daily Reporting' WhatsApp group (member: 919109192065). If the group chat_id is not yet resolved, list_chats on the sender account and match by name. Retry on transient 'provider_unreachable' errors (common right after reconnect)."
+    "destination_chat_id": "qQ81qvpcUzeu2R3QH1a1mQ",
+    "destination_group_provider_id": "120363411959503937@g.us",
+    "verified": "2026-07-17 — test report delivered to the group (message_id i4LCOyXXUZCxymhgtjJSAA).",
+    "_note": "Send the daily report to WhatsApp group 'Seminar Daily Reporting' (chat_id qQ81qvpcUzeu2R3QH1a1mQ) via send_message on sender_account_id lp24IfLWTjSj1NAqSm3-Lw. Unipile does not expose the group's name; the chat_id is authoritative. If sending fails with provider_unreachable, retry a few times; if 2065 shows CREDENTIALS again, fall back to email."
   },
 
   "approval": {
