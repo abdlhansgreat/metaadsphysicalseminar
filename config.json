@@ -110,6 +110,18 @@
     "repo_is_public_warning": "Because this repo is public, config.json (ad account / campaign IDs, landing URL) is publicly visible. Consider moving creative hosting to a dedicated public repo and making this config repo private."
   },
 
+  "whatsapp_report": {
+    "enabled": true,
+    "provider": "unipile",
+    "sender_account_id": "_6G6Qjb8TiaAa7Fd0KHNlA",
+    "sender_phone": "919109192065",
+    "sender_status_note": "As of 2026-07-17 this account shows status CREDENTIALS in Unipile (needs QR re-scan) and lists no chats. Reconnect it before sending.",
+    "destination_type": "group",
+    "destination_group_name": "Seminar Daily Reporting",
+    "destination_chat_id": "TODO_resolve_after_reconnect (list_chats on sender_account_id, match group name)",
+    "_note": "Send the daily report to the 'Seminar Daily Reporting' WhatsApp group (member: 919109192065). Resolve the group's chat_id via list_chats once the sender account is reconnected, then send with send_message."
+  },
+
   "approval": {
     "flow": "autonomous_optimisation_with_reporting",
     "notify_channels": ["gmail", "whatsapp"],
