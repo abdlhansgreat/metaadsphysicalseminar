@@ -1,0 +1,73 @@
+{
+  "_README": "This is the control panel for the daily Meta Ads automation. Fill in every value marked TODO. All money values are in INR (whole rupees unless noted). The daily agent reads THIS file first, every run.",
+
+  "account": {
+    "ad_account_id": "TODO_AD_ACCOUNT_ID",
+    "ad_account_name": "TODO_NAME_FOR_LOGS",
+    "currency": "INR",
+    "timezone": "Asia/Kolkata"
+  },
+
+  "campaign": {
+    "mode": "existing",
+    "campaign_id": "TODO_CAMPAIGN_ID_OR_LEAVE_BLANK",
+    "ad_set_id": "TODO_ADSET_ID_new_ads_are_created_under_this",
+    "page_id": "TODO_FACEBOOK_PAGE_ID",
+    "instagram_user_id": "",
+    "objective": "OUTCOME_LEADS",
+    "link_url": "TODO_LANDING_PAGE_OR_LEAD_FORM_URL",
+    "call_to_action_type": "SIGN_UP"
+  },
+
+  "daily_new_ad": {
+    "enabled": true,
+    "daily_budget_inr": 500,
+    "naming_pattern": "AutoAd {date}",
+    "message": "TODO_DEFAULT_PRIMARY_TEXT_for_new_ads",
+    "headline": "TODO_DEFAULT_HEADLINE"
+  },
+
+  "cpl_rules": {
+    "target_cpl_inr": 300,
+    "hard_ceiling_cpl_inr": 500,
+    "min_leads_before_judging": 3,
+    "min_spend_before_judging_inr": 300,
+    "lookback_days_for_cpl": 1,
+    "on_breach": "swap_creative"
+  },
+
+  "leads_source": {
+    "type": "google_sheet",
+    "sheet_file_id": "TODO_GOOGLE_SHEET_FILE_ID",
+    "sheet_tab_name": "TODO_TAB_NAME_or_leave_blank_for_first_tab",
+    "date_column_header": "TODO_e.g._Date or Timestamp",
+    "date_format": "TODO_e.g._DD/MM/YYYY or ISO",
+    "campaign_or_source_column_header": ""
+  },
+
+  "creatives": {
+    "type": "google_drive_folder",
+    "drive_folder_id": "TODO_DRIVE_FOLDER_ID_containing_ad_images_or_videos",
+    "selection_order": "oldest_unused_first",
+    "used_creatives_log": "logs/used_creatives.json"
+  },
+
+  "approval": {
+    "flow": "propose_then_approve",
+    "notify_channel": "gmail",
+    "notify_email": "connect@wpbmastery.in",
+    "approval_wait": "The agent stops after sending the proposal. It only creates/changes ads on the next run (or an immediate reply) where you have written APPROVE."
+  },
+
+  "schedule": {
+    "run_local_time": "09:10",
+    "timezone": "Asia/Kolkata"
+  },
+
+  "safety": {
+    "max_new_ads_per_day": 1,
+    "max_daily_spend_change_inr": 1000,
+    "never_touch_campaign_ids": [],
+    "require_approval_for_any_spend_change": true
+  }
+}
