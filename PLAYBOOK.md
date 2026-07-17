@@ -95,12 +95,33 @@ launch a Drive graphic, host it at a public URL Meta can fetch:
    `ads_activate_entity` to make it live. Record file→creative_id→ad_id in
    `logs/used_creatives.json`.
 
-### Reporting scope
-The daily report covers CPL per ad set for EVERY campaign in `monitoring.report_campaigns`:
-- Lead campaign → CPL from the sheet (UTM attribution).
-- Messaging campaign (`120248325986010412`) → CPL from Meta's cost per result (those leads are
-  not in the sheet).
+### Reporting scope + FORMAT (send this every day)
+Report per ad set for EVERY campaign in `monitoring.report_campaigns`. Use exactly this layout:
+
+```
+📊 Meta Ads — Daily Report — <date> (IST)
+
+LEAD CAMPAIGN — Lucknow Workshop
+Ad set        Spent     Leads   CPL      vs ₹60
+Lucknow|UP    ₹—        —       ₹—       🟢/🟡/🔴
+Chandigarh|PB ₹—        —       ₹—       🟢/🟡/🔴
+Total         ₹—        —       ₹— (blended)
+
+MESSAGING CAMPAIGN — New Leads
+Spent: ₹—   Conversations started: —   Cost/conversation: ₹—
+
+ACTION
+- <either> ✅ Done automatically: <what creatives were pushed / where>
+- <or>     ⚠️ Recommend (needs your APPROVE): <pause / budget change>
+- <or>     — Nothing needed today.
+```
+
+- Lead campaign → CPL = Meta spend ÷ sheet leads (UTM attribution), per ad set.
+- Messaging campaign (`120248325986010412`) → conversations & cost/conversation from Meta's
+  reported results / cost_per_result (these leads are NOT in the sheet).
 
 ### Autonomy (per `approval.rules`)
-- Adding / pushing new creatives into a target ad set is AUTONOMOUS — do it, then report.
-- Pausing ads, changing budgets, or creating campaigns REQUIRES an explicit APPROVE.
+- Adding / pushing new creatives into a target ad set is AUTONOMOUS — do it, then report it under "Done automatically".
+- Pausing ads, changing budgets, or creating campaigns REQUIRES an explicit APPROVE (list under "Recommend").
+- **LOCATION IS LOCKED — never edit geo targeting.** Lucknow ad set = Uttar Pradesh only;
+  Chandigarh ad set = Punjab only. The agent only ever adds creatives; it must never touch location.

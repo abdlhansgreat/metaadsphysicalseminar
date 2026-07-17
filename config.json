@@ -15,9 +15,10 @@
     "campaign_name": "Lead Campaign - Lucknow Workshop",
     "objective": "OUTCOME_LEADS",
     "target_ad_sets": [
-      { "ad_set_id": "120249894252900412", "label": "Chandigarh | Image", "city": "Chandigarh", "adset_daily_budget_inr": 500, "creatives_folder_id": "15j93JApZMF7wsPKtWLJPVuKqhK4yEdT-" },
-      { "ad_set_id": "120249797872690412", "label": "Lucknow | Image", "city": "Lucknow", "adset_daily_budget_inr": 500, "creatives_folder_id": "1iB_YbZiz-3ms-2pZrOw4T6rmoYZI1sY1" }
+      { "ad_set_id": "120249894252900412", "label": "Chandigarh | Image", "city": "Chandigarh", "locked_region": "Punjab", "adset_daily_budget_inr": 500, "creatives_folder_id": "15j93JApZMF7wsPKtWLJPVuKqhK4yEdT-" },
+      { "ad_set_id": "120249797872690412", "label": "Lucknow | Image", "city": "Lucknow", "locked_region": "Uttar Pradesh (UP)", "adset_daily_budget_inr": 500, "creatives_folder_id": "1iB_YbZiz-3ms-2pZrOw4T6rmoYZI1sY1" }
     ],
+    "_location_lock": "HARD RULE — NEVER change the geo/location targeting of these ad sets. Lucknow ad set = Uttar Pradesh only; Chandigarh ad set = Punjab only. The agent only ever adds creatives; it must never edit targeting/geo.",
     "page_id": "102609998534369",
     "instagram_user_id": "17841448483484680",
     "link_url": "https://lp.ipcstudiogrowth.in/ipc-1/",
@@ -120,6 +121,8 @@
     "max_daily_spend_change_inr": 1000,
     "never_touch_campaign_ids": [],
     "require_approval_for_spend_change_or_pause": true,
-    "creative_push_is_allowed_without_approval": true
+    "creative_push_is_allowed_without_approval": true,
+    "never_change_location_targeting": true,
+    "location_lock": { "Lucknow_adset_120249797872690412": "Uttar Pradesh only", "Chandigarh_adset_120249894252900412": "Punjab only" }
   }
 }
