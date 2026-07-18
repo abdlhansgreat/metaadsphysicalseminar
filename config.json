@@ -102,6 +102,44 @@
     ]
   },
 
+  "red_flag_alerts": {
+    "_note": "CRITICAL alerts. When any condition below is true, send a 🚨 RED FLAG WhatsApp message to the Seminar Daily Reporting group IMMEDIATELY (separate from the normal daily report) and also email it. Do NOT bury a critical issue inside the daily summary.",
+    "send_to_whatsapp_group_chat_id": "qQ81qvpcUzeu2R3QH1a1mQ",
+    "conditions": [
+      {
+        "id": "leads_stopped_while_spending",
+        "trigger": "The lead campaign is spending (spend > 0) today or yesterday, but NO new lead rows have appeared in the sheet for that period (0 leads despite spend), OR the sheet's newest Timestamp is older than 6 hours while ads are active.",
+        "meaning": "Form / form→sheet pipeline is likely broken — money spent, no leads captured.",
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "cpl_over_hard_ceiling",
+        "trigger": "Any judged ad set CPL > cpl_rules.hard_ceiling_cpl_inr (₹120).",
+        "severity": "HIGH"
+      },
+      {
+        "id": "messaging_cost_spike",
+        "trigger": "Messaging cost_per_result rises > 50% vs the prior day.",
+        "severity": "MEDIUM"
+      },
+      {
+        "id": "ad_disapproved_or_with_issues",
+        "trigger": "A live ad returns effective_status DISAPPROVED / WITH_ISSUES not explained by the known page ad-limit fallback.",
+        "severity": "HIGH"
+      },
+      {
+        "id": "spend_anomaly",
+        "trigger": "Daily spend on any ad set is > 2x its configured daily budget (possible runaway).",
+        "severity": "HIGH"
+      },
+      {
+        "id": "whatsapp_sender_down",
+        "trigger": "The WhatsApp sender account is disconnected (status CREDENTIALS) — then send via email and note it.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+
   "image_hosting": {
     "_note": "Meta CANNOT fetch Google Drive links directly, and the Meta connector has no image-upload tool. Bridge: the agent decodes each Drive creative locally (never through the model context) and commits it to this PUBLIC repo under creatives/, then hands Meta the raw.githubusercontent.com URL, which Meta CAN fetch. Proven working 2026-07-17.",
     "public_repo": "abdlhansgreat/metaadsphysicalseminar",

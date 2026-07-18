@@ -42,6 +42,17 @@ Otherwise mark it **"not enough data, keep running."**
 Breach = `CPL > cpl_rules.target_cpl_inr` (hard breach above `hard_ceiling_cpl_inr`). Because the
 sheet carries the ad ID, you can name the **exact ad** whose CPL crossed the line.
 
+## Step 3.5 — RED-FLAG CHECKS (do this FIRST, alert IMMEDIATELY) 🚨
+Before anything else, evaluate every condition in `config.red_flag_alerts.conditions`. If ANY is
+true, send a **separate 🚨 RED FLAG WhatsApp message** to the group RIGHT AWAY (and email it) —
+do NOT wait and do NOT bury it inside the daily report. The most important one:
+- **leads_stopped_while_spending:** if the lead campaign spent money but the sheet shows 0 new
+  leads for that period (or the newest sheet Timestamp is stale by >6h while ads run), that almost
+  always means the **form / form→sheet pipeline is broken** — money is being spent with nothing
+  captured. Flag it as CRITICAL, state last-lead time and spend-since, and tell the operator to fix
+  the form. Re-confirm in the group as soon as leads resume.
+Only after red-flag checks are handled do you proceed to the normal report/optimisation.
+
 ## Step 4 — Decide today's actions (do NOT execute yet)
 Assemble a **proposal**:
 
