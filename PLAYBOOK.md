@@ -15,42 +15,34 @@ missing fields instead of running. Everything below uses values from that file.
 
 Set `TODAY` and `YESTERDAY` in the account timezone (`account.timezone`).
 
-## Step 1 — Pull yesterday's spend from Meta (per ad set AND per ad)
-Use `ads_get_ad_entities` on `account.ad_account_id`, scoped to `campaign.campaign_id`:
-- `level: "ad"` and `level: "adset"`, `date_preset: "yesterday"`
-- fields: `id`, `name`, `adset_id`, `spend`.
-Record **spend per ad set** and **spend per ad**. (Meta's own `cost_per_lead` can differ from
-your sheet's truth — spend is what we take from Meta; leads come from the sheet.)
+## Step 1 — Pull yesterday's leads + CPL from META (source of truth)
+Use `ads_get_ad_entities` on `account.ad_account_id`, scoped to `campaign.campaign_id`,
+`level: "adset"`, `time_range` = yesterday, `time_increment: 1`, fields:
+`id`, `name`, `spend`, `results`, `cost_per_result`.
+- `results` = **Website leads** (same number Ads Manager shows), `cost_per_result` = **CPL**.
+- This is LIVE and reliable. Record spend, leads (results), and CPL per ad set. Repeat at
+  `level: "ad"` for the per-ad breakdown when you need to name a specific ad.
 
-## Step 2 — Count leads from the source of truth (the sheet)
-Read `leads_source.sheet_file_id` with the Google Drive tool. The sheet is UTM-tagged, so:
-- Keep only rows where `attribution.campaign_id_column` (**UTM Campaign**) ==
-  `attribution.only_count_campaign_id`.
-- Convert each row's `date_column_header` (**Timestamp**, ISO-8601 UTC) into
-  `leads_source.convert_to_timezone` and keep rows whose local date == `YESTERDAY`.
-- Bucket the leads by `attribution.adset_id_column` (**UTM Term** = ad set) and
-  `attribution.ad_id_column` (**UTM Content** = ad).
-This gives **leads per ad set** and **leads per ad** — the official numbers.
+## Step 2 — (Sheet is NOT used for counts)
+Do **NOT** count leads from the Google Sheet — the Drive export is cached/stale and has produced
+false "no leads" alarms. The sheet only holds contact details; Meta's Website leads (Step 1) is
+the official count. If you ever open the sheet, treat its freshness with suspicion.
 
-## Step 3 — Compute CPL per ad and per ad set, then judge
-For each ad (and ad set): `CPL = yesterday_spend / sheet_leads` (0 leads → treat as "no leads /
-infinite CPL"). Only judge an entity if it has enough signal:
-- `sheet_leads >= cpl_rules.min_leads_before_judging` **or**
-  `spend >= cpl_rules.min_spend_before_judging_inr`.
-Otherwise mark it **"not enough data, keep running."**
-
-Breach = `CPL > cpl_rules.target_cpl_inr` (hard breach above `hard_ceiling_cpl_inr`). Because the
-sheet carries the ad ID, you can name the **exact ad** whose CPL crossed the line.
+## Step 3 — Judge CPL
+For each ad set: CPL = `cost_per_result` (or spend/results). Only judge with enough signal:
+- `results >= cpl_rules.min_leads_before_judging` **or** `spend >= cpl_rules.min_spend_before_judging_inr`.
+Otherwise **"not enough data, keep running."**
+Breach = `CPL > cpl_rules.target_cpl_inr` (hard breach above `hard_ceiling_cpl_inr`).
 
 ## Step 3.5 — RED-FLAG CHECKS (do this FIRST, alert IMMEDIATELY) 🚨
 Before anything else, evaluate every condition in `config.red_flag_alerts.conditions`. If ANY is
 true, send a **separate 🚨 RED FLAG WhatsApp message** to the group RIGHT AWAY (and email it) —
 do NOT wait and do NOT bury it inside the daily report. The most important one:
-- **leads_stopped_while_spending:** if the lead campaign spent money but the sheet shows 0 new
-  leads for that period (or the newest sheet Timestamp is stale by >6h while ads run), that almost
-  always means the **form / form→sheet pipeline is broken** — money is being spent with nothing
-  captured. Flag it as CRITICAL, state last-lead time and spend-since, and tell the operator to fix
-  the form. Re-confirm in the group as soon as leads resume.
+- **leads_stopped_while_spending:** base this on **META Website leads (results), NOT the sheet.**
+  If the lead campaign spent > ~₹300 in a full day but Meta reports **0 Website leads** that day,
+  the form/landing-page pixel is likely broken — flag CRITICAL with the spend and the last day that
+  had leads. NEVER raise this from the Google Sheet being empty (its Drive export is cached and gave
+  a false alarm on 17-18 Jul). Re-confirm in the group as soon as Meta shows leads again.
 Only after red-flag checks are handled do you proceed to the normal report/optimisation.
 
 ## Step 4 — Decide today's actions (do NOT execute yet)

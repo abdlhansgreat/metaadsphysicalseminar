@@ -54,19 +54,16 @@
   },
 
   "leads_source": {
-    "type": "google_sheet",
-    "sheet_file_id": "1y80Eg_ynvpkBxKBe-UUraYX8HXBh2Cg-qyIjeZXHDRM",
-    "sheet_tab_name": "",
-    "date_column_header": "Timestamp",
-    "date_format": "ISO8601_UTC",
-    "convert_to_timezone": "Asia/Kolkata",
-    "attribution": {
-      "campaign_id_column": "UTM Campaign",
-      "adset_id_column": "UTM Term",
-      "ad_id_column": "UTM Content",
-      "only_count_campaign_id": "120249797872700412"
+    "PRIMARY": "meta_website_leads",
+    "primary_note": "Lead COUNT and CPL come from META: ads_get_ad_entities on lead campaign 120249797872700412 with fields results + cost_per_result (label 'Website leads'), per ad set, time_increment 1. This matches Ads Manager and is LIVE. Use this for CPL and for the leads-stopped red flag.",
+    "secondary_google_sheet": {
+      "status": "UNRELIABLE via Drive connector — the CSV/read export is cached and lagged badly (stuck at 16 Jul, row count went 254->251). Do NOT use it for lead counts or red flags. Only use it (if ever) to pull a lead's contact details, and treat freshness with suspicion.",
+      "sheet_file_id": "1y80Eg_ynvpkBxKBe-UUraYX8HXBh2Cg-qyIjeZXHDRM",
+      "date_column_header": "Timestamp",
+      "attribution": { "campaign_id_column": "UTM Campaign", "adset_id_column": "UTM Term", "ad_id_column": "UTM Content", "only_count_campaign_id": "120249797872700412" }
     },
-    "_note": "Leads carry Meta IDs via UTM tags, so the agent counts leads per ad set (UTM Term) and per ad (UTM Content), and only for our campaign (UTM Campaign = 120249797872700412). Timestamp is UTC (Z) and is shifted to Asia/Kolkata before bucketing by day."
+    "_incident": "2026-07-17/18: cached sheet showed 0 leads and triggered a FALSE 'form down' alarm, but Meta showed 0 leads on 17 Jul (real, brief outage) and 9 leads on 18 Jul (recovered). Lesson: Meta is the source of truth for lead counts.",
+    "operator_preference": "Operator wants lead counts taken from the LEAD SHEET (title 'Delhi Photography Workshop - Leads') with DUPLICATES REMOVED (dedupe by normalised Phone; fall back to Email). BLOCKER: the sheet cannot be read fresh from this automation environment — the Drive connector serves a 3-day-stale cached export, and direct HTTPS fetch of Google is network-blocked (403). Sheet modifiedTime confirms it IS live. PENDING DECISION (A/B/both): A = report leads from Meta Website leads now; B = mirror the form leads into Supabase/Notion (readable live here) then count from there with phone-dedupe. Until B is set up, use Meta (A)."
   },
 
   "creatives": {
@@ -88,8 +85,8 @@
       {
         "campaign_id": "120249797872700412",
         "name": "Lead Campaign - Lucknow Workshop",
-        "cpl_source": "google_sheet",
-        "comment": "CPL = Meta spend / sheet leads, per ad set and per ad (UTM attribution)."
+        "cpl_source": "meta_website_leads",
+        "comment": "CPL per ad set from Meta results (Website leads) + cost_per_result — matches Ads Manager, live. Do NOT use the Google Sheet (Drive export is cached/unreliable)."
       },
       {
         "campaign_id": "120248325986010412",
@@ -110,8 +107,8 @@
     "conditions": [
       {
         "id": "leads_stopped_while_spending",
-        "trigger": "The lead campaign is spending (spend > 0) today or yesterday, but NO new lead rows have appeared in the sheet for that period (0 leads despite spend), OR the sheet's newest Timestamp is older than 6 hours while ads are active.",
-        "meaning": "Form / form→sheet pipeline is likely broken — money spent, no leads captured.",
+        "trigger": "Base this on META's Website leads (results), NOT the Google Sheet. If the lead campaign spent > ~₹300 in a full day but Meta reports 0 Website leads (results) for that day, the form/pixel is likely broken. Do NOT use the Google Sheet for this check — the Drive export is cached/stale and caused a FALSE 'no leads' alarm on 17-18 Jul.",
+        "meaning": "Form / landing-page pixel likely broken — money spent, no leads.",
         "severity": "CRITICAL"
       },
       {
