@@ -15,8 +15,8 @@
     "campaign_name": "Lead Campaign - Lucknow Workshop",
     "objective": "OUTCOME_LEADS",
     "target_ad_sets": [
-      { "ad_set_id": "120249894252900412", "label": "Chandigarh | Image", "city": "Chandigarh", "locked_region": "Punjab", "adset_daily_budget_inr": 500, "creatives_folder_id": "15j93JApZMF7wsPKtWLJPVuKqhK4yEdT-" },
-      { "ad_set_id": "120249797872690412", "label": "Lucknow | Image", "city": "Lucknow", "locked_region": "Uttar Pradesh (UP)", "adset_daily_budget_inr": 500, "creatives_folder_id": "1iB_YbZiz-3ms-2pZrOw4T6rmoYZI1sY1" }
+      { "ad_set_id": "120249894252900412", "label": "Chandigarh | Image", "city": "Chandigarh", "locked_region": "Punjab", "adset_daily_budget_inr": 500, "status": "PAUSED 2026-07-19 (CPL ₹158, awaiting fresh creatives)", "creatives_folder_id": "15j93JApZMF7wsPKtWLJPVuKqhK4yEdT-" },
+      { "ad_set_id": "120249797872690412", "label": "Lucknow | Image", "city": "Lucknow", "locked_region": "Uttar Pradesh (UP)", "adset_daily_budget_inr": 2000, "status": "ACTIVE, scaled to ₹2000/day 2026-07-19 for the 14-Aug seminar push (operator-approved). Was ₹500. Watch CPL; push toward ₹2500 if it holds.", "creatives_folder_id": "1iB_YbZiz-3ms-2pZrOw4T6rmoYZI1sY1" }
     ],
     "_location_lock": "HARD RULE — NEVER change the geo/location targeting of these ad sets. Lucknow ad set = Uttar Pradesh only; Chandigarh ad set = Punjab only. The agent only ever adds creatives; it must never edit targeting/geo.",
     "page_id": "102609998534369",
