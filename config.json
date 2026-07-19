@@ -105,6 +105,8 @@
   "red_flag_alerts": {
     "_note": "CRITICAL alerts. When any condition below is true, send a 🚨 RED FLAG WhatsApp message to the Seminar Daily Reporting group IMMEDIATELY (separate from the normal daily report) and also email it. Do NOT bury a critical issue inside the daily summary.",
     "send_to_whatsapp_group_chat_id": "qQ81qvpcUzeu2R3QH1a1mQ",
+    "health_check_routine_id": "trig_017FegECx75r3YR2eTnUeTaZ",
+    "health_check_cadence": "every 3h at 11:00, 14:00, 17:00, 20:00, 23:00 Asia/Kolkata (cron '30 5,8,11,14,17 * * *' UTC) — alerts only, silent when healthy",
     "conditions": [
       {
         "id": "leads_stopped_while_spending",
