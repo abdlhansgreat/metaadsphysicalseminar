@@ -15,22 +15,28 @@ missing fields instead of running. Everything below uses values from that file.
 
 Set `TODAY` and `YESTERDAY` in the account timezone (`account.timezone`).
 
-## Step 1 — Pull yesterday's leads + CPL from META (source of truth)
-Use `ads_get_ad_entities` on `account.ad_account_id`, scoped to `campaign.campaign_id`,
-`level: "adset"`, `time_range` = yesterday, `time_increment: 1`, fields:
-`id`, `name`, `spend`, `results`, `cost_per_result`.
-- `results` = **Website leads** (same number Ads Manager shows), `cost_per_result` = **CPL**.
-- This is LIVE and reliable. Record spend, leads (results), and CPL per ad set. Repeat at
-  `level: "ad"` for the per-ad breakdown when you need to name a specific ad.
+## Step 1 — Pull yesterday's spend from Meta (+ Meta Website leads as cross-check)
+`ads_get_ad_entities`, scoped to `campaign.campaign_id`, `level: "adset"`, `time_range` = yesterday,
+`time_increment: 1`, fields: `id`, `name`, `spend`, `results`, `cost_per_result`.
+- Use **`spend`** per ad set for CPL. Keep `results` (Meta "Website leads") as a **cross-check**.
 
-## Step 2 — (Sheet is NOT used for counts)
-Do **NOT** count leads from the Google Sheet — the Drive export is cached/stale and has produced
-false "no leads" alarms. The sheet only holds contact details; Meta's Website leads (Step 1) is
-the official count. If you ever open the sheet, treat its freshness with suspicion.
+## Step 2 — Pull deduped leads from Supabase (PRIMARY count)
+Read the live mirror via Supabase `execute_sql` on project `leads_source.supabase.project_id`:
+```
+select utm_term as adset_id, count(distinct phone_norm) as leads
+from public.meta_ad_leads
+where utm_campaign='120249797872700412'
+  and (lead_ts at time zone 'Asia/Kolkata')::date = '<YESTERDAY>'
+group by utm_term;
+```
+This is the **official, phone-deduped** lead count per ad set. Do NOT read the Google Sheet via the
+Drive connector (cached/stale). If the Supabase table is empty (bridge not installed yet), fall
+back to Meta Website leads for the count and say so in the report.
 
-## Step 3 — Judge CPL
-For each ad set: CPL = `cost_per_result` (or spend/results). Only judge with enough signal:
-- `results >= cpl_rules.min_leads_before_judging` **or** `spend >= cpl_rules.min_spend_before_judging_inr`.
+## Step 3 — Compute CPL and judge
+Per ad set: **CPL = Meta spend ÷ Supabase deduped leads**. If Supabase and Meta Website-leads
+diverge a lot, note it. Only judge with enough signal:
+- `leads >= cpl_rules.min_leads_before_judging` **or** `spend >= cpl_rules.min_spend_before_judging_inr`.
 Otherwise **"not enough data, keep running."**
 Breach = `CPL > cpl_rules.target_cpl_inr` (hard breach above `hard_ceiling_cpl_inr`).
 

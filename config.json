@@ -54,8 +54,17 @@
   },
 
   "leads_source": {
-    "PRIMARY": "meta_website_leads",
-    "primary_note": "Lead COUNT and CPL come from META: ads_get_ad_entities on lead campaign 120249797872700412 with fields results + cost_per_result (label 'Website leads'), per ad set, time_increment 1. This matches Ads Manager and is LIVE. Use this for CPL and for the leads-stopped red flag.",
+    "PRIMARY": "supabase_meta_ad_leads",
+    "supabase": {
+      "project_id": "yhsambvuciyoopgblzrh",
+      "project_name": "IPC Studios",
+      "table": "public.meta_ad_leads",
+      "dedupe_by": "phone_norm (last 10 digits of phone)",
+      "count_query": "select utm_term as adset_id, count(distinct phone_norm) as leads from public.meta_ad_leads where utm_campaign='120249797872700412' and (lead_ts at time zone 'Asia/Kolkata')::date = '<YYYY-MM-DD>' group by utm_term;",
+      "note": "PRIMARY lead source. Leads mirrored from the Google Sheet via an Apps Script (see docs/LEADS_SUPABASE.md). Count = distinct phone per ad set per IST day. CPL = Meta spend / these deduped leads. Read live via Supabase execute_sql.",
+      "setup_status": "Table + insert policy created 2026-07-19. PENDING: operator installs the Apps Script bridge on the sheet (docs/LEADS_SUPABASE.md) so rows start flowing. Until data arrives, fall back to Meta Website leads and note it."
+    },
+    "cross_check": "meta_website_leads (ads_get_ad_entities results/cost_per_result on campaign 120249797872700412). Use as fallback until Supabase has data, and to sanity-check the sheet count.",
     "secondary_google_sheet": {
       "status": "UNRELIABLE via Drive connector — the CSV/read export is cached and lagged badly (stuck at 16 Jul, row count went 254->251). Do NOT use it for lead counts or red flags. Only use it (if ever) to pull a lead's contact details, and treat freshness with suspicion.",
       "sheet_file_id": "1y80Eg_ynvpkBxKBe-UUraYX8HXBh2Cg-qyIjeZXHDRM",
