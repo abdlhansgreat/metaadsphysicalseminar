@@ -93,6 +93,45 @@
       "instagram_user_id": "17841448483484680",
       "placements": "FB+IG",
       "launched": "2026-07-19"
+    },
+    {
+      "city": "Lucknow",
+      "drive_file_id": "1ae0UXdMfLWiXl4LknSOJk27XrSV8ciP6",
+      "repo_path": "creatives/lucknow-6.png",
+      "creative_id": "27570059192658202",
+      "ad_id": "120250190506870412",
+      "adset_id": "120249797872690412",
+      "page": "102609998534369 (primary)",
+      "instagram_user_id": "17841448483484680",
+      "placements": "FB+IG",
+      "launched": "2026-07-20",
+      "note": "New 20-Jul creative batch, launched to bring Lucknow CPL down for the 14-Aug seminar push."
+    },
+    {
+      "city": "Lucknow",
+      "drive_file_id": "1en1a-9FnMWSAWqhCMtAZ3DKCtV8MIEzw",
+      "repo_path": "creatives/lucknow-7.png",
+      "creative_id": "1238754308327792",
+      "ad_id": "120250190513750412",
+      "adset_id": "120249797872690412",
+      "page": "102609998534369 (primary)",
+      "instagram_user_id": "17841448483484680",
+      "placements": "FB+IG",
+      "launched": "2026-07-20",
+      "note": "New 20-Jul creative batch."
+    },
+    {
+      "city": "Lucknow",
+      "drive_file_id": "1pKfjIuOCdjuyBzgLR8pG50dcF4HDJFw3",
+      "repo_path": "creatives/lucknow-8.png",
+      "creative_id": "1731880174681612",
+      "ad_id": "120250190519890412",
+      "adset_id": "120249797872690412",
+      "page": "102609998534369 (primary)",
+      "instagram_user_id": "17841448483484680",
+      "placements": "FB+IG",
+      "launched": "2026-07-20",
+      "note": "New 20-Jul creative batch. Remaining unused Lucknow images queued: 1qgRn8s0wh306Mo9KZA6K0cLFowG7hDw5 (17-Jul reserve), 1IK4Cb7iI4ZedVXz6tywnbqh7yF-SyojM, 1LyLeNVF5J7ilqQyzLKT5Us-7yPInEEtt, 1zPnOxNecehpUWVCI48vvxcxeSH01gr2y (20-Jul batch)."
     }
   ]
 }
