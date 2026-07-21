@@ -159,15 +159,17 @@
   "whatsapp_report": {
     "enabled": true,
     "provider": "unipile",
-    "sender_account_id": "lp24IfLWTjSj1NAqSm3-Lw",
-    "sender_account_id_old_stale": "_6G6Qjb8TiaAa7Fd0KHNlA",
+    "sender_account_id": "6uA43rYJRVaSnCL3Ak1uow",
+    "sender_account_id_old_stale": ["lp24IfLWTjSj1NAqSm3-Lw", "_6G6Qjb8TiaAa7Fd0KHNlA"],
     "sender_phone": "919109192065",
-    "sender_status_note": "Reconnected 2026-07-17T09:13 (status OK). New Unipile account_id is lp24IfLWTjSj1NAqSm3-Lw — always use this one, not the old stale _6G6... id.",
+    "sender_status_note": "Reconnected 2026-07-21T02:57 (status OK) after a QR re-scan. Current Unipile account_id = 6uA43rYJRVaSnCL3Ak1uow — always use this one. The lp24... and _6G6... ids are dead duplicates (status CREDENTIALS).",
     "destination_type": "group",
     "destination_group_name": "Seminar Daily Reporting",
-    "destination_chat_id": "qQ81qvpcUzeu2R3QH1a1mQ",
+    "destination_chat_id": "PENDING_RERESOLVE",
+    "destination_chat_id_old_under_dead_account": "qQ81qvpcUzeu2R3QH1a1mQ",
     "destination_group_provider_id": "120363411959503937@g.us",
-    "verified": "2026-07-17 — test report delivered to the group (message_id i4LCOyXXUZCxymhgtjJSAA).",
+    "_chat_id_note": "Chat ids are per-account in Unipile. After the 21-Jul reconnect the account_id changed, so the old chat_id qQ81qvpcUzeu2R3QH1a1mQ is stale. Re-resolve the group's new chat_id under account 6uA43rYJRVaSnCL3Ak1uow (GET /chats?account_id=... once WhatsApp finishes syncing, match by provider id 120363411959503937@g.us) before sending, then write it into destination_chat_id.",
+    "verified": "2026-07-17 — test report delivered to the group (message_id i4LCOyXXUZCxymhgtjJSAA). 21-Jul: account reconnected, chat_id re-resolution pending sync.",
     "_note": "Send the daily report to WhatsApp group 'Seminar Daily Reporting' (chat_id qQ81qvpcUzeu2R3QH1a1mQ) via send_message on sender_account_id lp24IfLWTjSj1NAqSm3-Lw. Unipile does not expose the group's name; the chat_id is authoritative. If sending fails with provider_unreachable, retry a few times; if 2065 shows CREDENTIALS again, fall back to email."
   },
 
