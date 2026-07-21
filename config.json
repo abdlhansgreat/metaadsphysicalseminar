@@ -136,7 +136,7 @@
   },
   "red_flag_alerts": {
     "_note": "CRITICAL alerts. When any condition below is true, send a 🚨 RED FLAG WhatsApp message to the Seminar Daily Reporting group IMMEDIATELY (separate from the normal daily report) and also email it. Do NOT bury a critical issue inside the daily summary.",
-    "send_to_whatsapp_group_chat_id": "qQ81qvpcUzeu2R3QH1a1mQ",
+    "send_to_whatsapp_group_chat_id": "mPB_b2KfXL6WxGT0PAOLpQ",
     "health_check_routine_id": "trig_017FegECx75r3YR2eTnUeTaZ",
     "health_check_cadence": "every 3h at 11:00, 14:00, 17:00, 20:00, 23:00 Asia/Kolkata (cron '30 5,8,11,14,17 * * *' UTC) — alerts only, silent when healthy",
     "conditions": [
@@ -183,21 +183,22 @@
   "whatsapp_report": {
     "enabled": true,
     "provider": "unipile",
-    "sender_account_id": "6uA43rYJRVaSnCL3Ak1uow",
+    "sender_account_id": "vrt71HRNSCG0paZGW1FX-A",
     "sender_account_id_old_stale": [
       "lp24IfLWTjSj1NAqSm3-Lw",
-      "_6G6Qjb8TiaAa7Fd0KHNlA"
+      "_6G6Qjb8TiaAa7Fd0KHNlA",
+      "6uA43rYJRVaSnCL3Ak1uow"
     ],
     "sender_phone": "919109192065",
-    "sender_status_note": "Reconnected 2026-07-21T02:57 (status OK) after a QR re-scan. Current Unipile account_id = 6uA43rYJRVaSnCL3Ak1uow — always use this one. The lp24... and _6G6... ids are dead duplicates (status CREDENTIALS).",
+    "sender_status_note": "Reconnected 2026-07-21T10:57 (status OK). Current Unipile account_id = vrt71HRNSCG0paZGW1FX-A. NOTE: this WhatsApp session keeps dropping because Unipile routes it via a non-India proxy (FR/AE) while the phone is in India — WhatsApp kills the linked device on geo mismatch. Durable fix: set the Unipile proxy to India. Re-scan QR via connect_account when status returns to CREDENTIALS.",
     "destination_type": "group",
     "destination_group_name": "Seminar Daily Reporting",
-    "destination_chat_id": "PENDING_RERESOLVE",
-    "destination_chat_id_old_under_dead_account": "qQ81qvpcUzeu2R3QH1a1mQ",
+    "destination_chat_id": "mPB_b2KfXL6WxGT0PAOLpQ",
     "destination_group_provider_id": "120363411959503937@g.us",
     "_chat_id_note": "Chat ids are per-account in Unipile. After the 21-Jul reconnect the account_id changed, so the old chat_id qQ81qvpcUzeu2R3QH1a1mQ is stale. Re-resolve the group's new chat_id under account 6uA43rYJRVaSnCL3Ak1uow (GET /chats?account_id=... once WhatsApp finishes syncing, match by provider id 120363411959503937@g.us) before sending, then write it into destination_chat_id.",
-    "verified": "2026-07-17 — test report delivered to the group (message_id i4LCOyXXUZCxymhgtjJSAA). 21-Jul: account reconnected, chat_id re-resolution pending sync.",
-    "_note": "Send the daily report to WhatsApp group 'Seminar Daily Reporting' (chat_id qQ81qvpcUzeu2R3QH1a1mQ) via send_message on sender_account_id lp24IfLWTjSj1NAqSm3-Lw. Unipile does not expose the group's name; the chat_id is authoritative. If sending fails with provider_unreachable, retry a few times; if 2065 shows CREDENTIALS again, fall back to email."
+    "verified": "2026-07-21T11:33 — report delivered to the group (message_id J6bq5ALRUwm-ndSPIF5n5Q) via account vrt71HRNSCG0paZGW1FX-A, chat mPB_b2KfXL6WxGT0PAOLpQ.",
+    "_note": "Send the daily report to WhatsApp group 'Seminar Daily Reporting' (chat_id qQ81qvpcUzeu2R3QH1a1mQ) via send_message on sender_account_id lp24IfLWTjSj1NAqSm3-Lw. Unipile does not expose the group's name; the chat_id is authoritative. If sending fails with provider_unreachable, retry a few times; if 2065 shows CREDENTIALS again, fall back to email.",
+    "destination_chat_id_note": "Chat ids are per-account; re-resolve after any reconnect via GET /chats/120363411959503937@g.us?account_id=<current>. Group JID 120363411959503937@g.us is stable."
   },
   "approval": {
     "flow": "autonomous_optimisation_with_reporting",
