@@ -1,6 +1,5 @@
 {
   "_README": "This is the control panel for the daily Meta Ads automation. Fill in every value marked TODO. All money values are in INR (whole rupees unless noted). The daily agent reads THIS file first, every run.",
-
   "account": {
     "ad_account_id": "26893427890242195",
     "ad_account_name": "Workshop Ad Account",
@@ -8,24 +7,48 @@
     "currency": "INR",
     "timezone": "Asia/Kolkata"
   },
-
   "campaign": {
     "mode": "existing",
     "campaign_id": "120249797872700412",
     "campaign_name": "Lead Campaign - Lucknow Workshop",
     "objective": "OUTCOME_LEADS",
     "target_ad_sets": [
-      { "ad_set_id": "120249894252900412", "label": "Chandigarh | Image", "city": "Chandigarh", "locked_region": "Punjab", "adset_daily_budget_inr": 500, "status": "PAUSED 2026-07-19 (CPL ₹158, awaiting fresh creatives)", "creatives_folder_id": "15j93JApZMF7wsPKtWLJPVuKqhK4yEdT-" },
-      { "ad_set_id": "120249797872690412", "label": "Lucknow | Image", "city": "Lucknow", "locked_region": "Uttar Pradesh (UP)", "adset_daily_budget_inr": 2000, "status": "ACTIVE, scaled to ₹2000/day 2026-07-19 for the 14-Aug seminar push (operator-approved). Was ₹500. Watch CPL; push toward ₹2500 if it holds.", "creatives_folder_id": "1iB_YbZiz-3ms-2pZrOw4T6rmoYZI1sY1" }
+      {
+        "ad_set_id": "120249894252900412",
+        "label": "Chandigarh | Image",
+        "city": "Chandigarh",
+        "locked_region": "Punjab",
+        "adset_daily_budget_inr": 500,
+        "status": "PAUSED 2026-07-19 (CPL ₹158, awaiting fresh creatives)",
+        "creatives_folder_id": "15j93JApZMF7wsPKtWLJPVuKqhK4yEdT-"
+      },
+      {
+        "ad_set_id": "120249797872690412",
+        "label": "Lucknow | Image",
+        "city": "Lucknow",
+        "locked_region": "Uttar Pradesh (UP)",
+        "adset_daily_budget_inr": 2000,
+        "status": "ACTIVE, scaled to ₹2000/day 2026-07-19 for the 14-Aug seminar push (operator-approved). Was ₹500. Watch CPL; push toward ₹2500 if it holds.",
+        "creatives_folder_id": "1iB_YbZiz-3ms-2pZrOw4T6rmoYZI1sY1"
+      },
+      {
+        "ad_set_id": "120250225542880412",
+        "label": "Lucknow | ImageB",
+        "city": "Lucknow",
+        "locked_region": "Uttar Pradesh (UP)",
+        "adset_daily_budget_inr": 1000,
+        "status": "ACTIVE from 2026-07-21 — duplicate of the Lucknow ad set (open UP targeting, geo unchanged), 3 fresh creatives (lucknow-9/10/11). Added to break audience saturation: ₹2,000 on ad set A gave the same leads as ₹1,000. Started ₹1,000/day.",
+        "creatives_folder_id": "1iB_YbZiz-3ms-2pZrOw4T6rmoYZI1sY1"
+      }
     ],
     "_location_lock": "HARD RULE — NEVER change the geo/location targeting of these ad sets. Lucknow ad set = Uttar Pradesh only; Chandigarh ad set = Punjab only. The agent only ever adds creatives; it must never edit targeting/geo.",
     "page_id": "102609998534369",
     "instagram_user_id": "17841448483484680",
     "link_url": "https://lp.ipcstudiogrowth.in/ipc-1/",
     "call_to_action_type": "SEE_DETAILS",
-    "_note": "New daily ads are created INSIDE the target ad sets, so they share each ad set's existing ~500 INR/day budget and inherit its targeting. The agent does not add budget without approval."
+    "_note": "New daily ads are created INSIDE the target ad sets, so they share each ad set's existing ~500 INR/day budget and inherit its targeting. The agent does not add budget without approval.",
+    "_adset_A_note": "Ad set A = 120249797872690412 (Lucknow | Image) at ₹2,000/day. Ad set B = 120250225542880412 (Lucknow | ImageB) at ₹1,000/day — both Uttar Pradesh, open targeting. Campaign is ABO (per-ad-set budgets)."
   },
-
   "pages": {
     "primary_page_id": "102609998534369",
     "primary_supports_instagram": true,
@@ -35,7 +58,6 @@
     "fallback_instagram_user_id": "17841431028601139",
     "_note": "When the primary page hits its Meta ad-limit (new ad shows effective_status WITH_ISSUES / 'ad limit reached'), relaunch the same creative on the fallback page. Use fallback_instagram_user_id (17841431028601139) for IG on Bihar-page ads — the primary page's IG (17841448483484680) is NOT accessible from the Bihar page. On 2026-07-17 the primary page hit its limit and Lucknow creatives 2 & 3 were relaunched on the Bihar page with its own IG (FB+IG)."
   },
-
   "daily_new_ad": {
     "enabled": true,
     "naming_pattern": "AutoAd {city} {date}",
@@ -43,7 +65,6 @@
     "message": "Ek wedding photographer ne mujhse poochha — \"Abdullah bhai, main har weekend shoot karta hoon, phir bhi month end pe paisa nahi bachta. Kyun?\"\n\nKyunki photography seekhna aur photography business banana — dono bilkul alag cheezein hain.\n\nPehli baar {city} mein ek physical workshop aa rahi hai, specifically wedding photographers ke liye. Seats limited hain.\n\n👉 Call/WhatsApp: 8210515506",
     "headline": "Wedding Photography se 1 Crore — possible hai, agar sahi plan ho"
   },
-
   "cpl_rules": {
     "target_cpl_inr": 60,
     "hard_ceiling_cpl_inr": 120,
@@ -52,7 +73,6 @@
     "lookback_days_for_cpl": 1,
     "on_breach": "swap_creative"
   },
-
   "leads_source": {
     "PRIMARY": "supabase_meta_ad_leads",
     "supabase": {
@@ -69,12 +89,16 @@
       "status": "UNRELIABLE via Drive connector — the CSV/read export is cached and lagged badly (stuck at 16 Jul, row count went 254->251). Do NOT use it for lead counts or red flags. Only use it (if ever) to pull a lead's contact details, and treat freshness with suspicion.",
       "sheet_file_id": "1y80Eg_ynvpkBxKBe-UUraYX8HXBh2Cg-qyIjeZXHDRM",
       "date_column_header": "Timestamp",
-      "attribution": { "campaign_id_column": "UTM Campaign", "adset_id_column": "UTM Term", "ad_id_column": "UTM Content", "only_count_campaign_id": "120249797872700412" }
+      "attribution": {
+        "campaign_id_column": "UTM Campaign",
+        "adset_id_column": "UTM Term",
+        "ad_id_column": "UTM Content",
+        "only_count_campaign_id": "120249797872700412"
+      }
     },
     "_incident": "2026-07-17/18: cached sheet showed 0 leads and triggered a FALSE 'form down' alarm, but Meta showed 0 leads on 17 Jul (real, brief outage) and 9 leads on 18 Jul (recovered). Lesson: Meta is the source of truth for lead counts.",
     "operator_preference": "Operator wants lead counts taken from the LEAD SHEET (title 'Delhi Photography Workshop - Leads') with DUPLICATES REMOVED (dedupe by normalised Phone; fall back to Email). BLOCKER: the sheet cannot be read fresh from this automation environment — the Drive connector serves a 3-day-stale cached export, and direct HTTPS fetch of Google is network-blocked (403). Sheet modifiedTime confirms it IS live. PENDING DECISION (A/B/both): A = report leads from Meta Website leads now; B = mirror the form leads into Supabase/Notion (readable live here) then count from there with phone-dedupe. Until B is set up, use Meta (A)."
   },
-
   "creatives": {
     "type": "google_drive_city_folders",
     "parent_folder_id": "1ikWNeF_U1VtamXrLD-otpDQKmR29l0Wc",
@@ -87,7 +111,6 @@
     "used_creatives_log": "logs/used_creatives.json",
     "_note": "CITY-LOCKED: a Lucknow ad set may ONLY use images from the Lucknow folder; Chandigarh ONLY from the Chandigarh folder. Never cross them. Each ad set's creatives_folder_id (in campaign.target_ad_sets) is authoritative."
   },
-
   "monitoring": {
     "_note": "Every day the agent REPORTS CPL per ad set for ALL campaigns below, not just the lead campaign.",
     "report_campaigns": [
@@ -102,12 +125,15 @@
         "name": "New Leads campaign (messaging / conversations)",
         "ad_set_id": "120248325986000412",
         "metric_source": "meta_dashboard",
-        "metric_fields": ["spend", "results", "cost_per_result"],
+        "metric_fields": [
+          "spend",
+          "results",
+          "cost_per_result"
+        ],
         "comment": "Messaging conversations do NOT land in the Google Sheet. Read them STRAIGHT FROM META's dashboard metrics: `results` = messaging conversations started, `cost_per_result` = cost per conversation. Do NOT use cost_per_lead or derive from spend — that gave a wrong number (₹407/2 vs the true ₹81.37/10 on 2026-07-16)."
       }
     ]
   },
-
   "red_flag_alerts": {
     "_note": "CRITICAL alerts. When any condition below is true, send a 🚨 RED FLAG WhatsApp message to the Seminar Daily Reporting group IMMEDIATELY (separate from the normal daily report) and also email it. Do NOT bury a critical issue inside the daily summary.",
     "send_to_whatsapp_group_chat_id": "qQ81qvpcUzeu2R3QH1a1mQ",
@@ -147,7 +173,6 @@
       }
     ]
   },
-
   "image_hosting": {
     "_note": "Meta CANNOT fetch Google Drive links directly, and the Meta connector has no image-upload tool. Bridge: the agent decodes each Drive creative locally (never through the model context) and commits it to this PUBLIC repo under creatives/, then hands Meta the raw.githubusercontent.com URL, which Meta CAN fetch. Proven working 2026-07-17.",
     "public_repo": "abdlhansgreat/metaadsphysicalseminar",
@@ -155,12 +180,14 @@
     "raw_url_pattern": "https://raw.githubusercontent.com/abdlhansgreat/metaadsphysicalseminar/claude/meta-ads-tracking-auto-launch-husdny/creatives/{filename}",
     "repo_is_public_warning": "Because this repo is public, config.json (ad account / campaign IDs, landing URL) is publicly visible. Consider moving creative hosting to a dedicated public repo and making this config repo private."
   },
-
   "whatsapp_report": {
     "enabled": true,
     "provider": "unipile",
     "sender_account_id": "6uA43rYJRVaSnCL3Ak1uow",
-    "sender_account_id_old_stale": ["lp24IfLWTjSj1NAqSm3-Lw", "_6G6Qjb8TiaAa7Fd0KHNlA"],
+    "sender_account_id_old_stale": [
+      "lp24IfLWTjSj1NAqSm3-Lw",
+      "_6G6Qjb8TiaAa7Fd0KHNlA"
+    ],
     "sender_phone": "919109192065",
     "sender_status_note": "Reconnected 2026-07-21T02:57 (status OK) after a QR re-scan. Current Unipile account_id = 6uA43rYJRVaSnCL3Ak1uow — always use this one. The lp24... and _6G6... ids are dead duplicates (status CREDENTIALS).",
     "destination_type": "group",
@@ -172,10 +199,12 @@
     "verified": "2026-07-17 — test report delivered to the group (message_id i4LCOyXXUZCxymhgtjJSAA). 21-Jul: account reconnected, chat_id re-resolution pending sync.",
     "_note": "Send the daily report to WhatsApp group 'Seminar Daily Reporting' (chat_id qQ81qvpcUzeu2R3QH1a1mQ) via send_message on sender_account_id lp24IfLWTjSj1NAqSm3-Lw. Unipile does not expose the group's name; the chat_id is authoritative. If sending fails with provider_unreachable, retry a few times; if 2065 shows CREDENTIALS again, fall back to email."
   },
-
   "approval": {
     "flow": "autonomous_optimisation_with_reporting",
-    "notify_channels": ["gmail", "whatsapp"],
+    "notify_channels": [
+      "gmail",
+      "whatsapp"
+    ],
     "notify_email": "connect@wpbmastery.in",
     "rules": {
       "autonomous_then_inform": [
@@ -196,7 +225,6 @@
       "daily_report": "ALWAYS sent every morning — per ad set: spend, leads, CPL (lead campaign) and spend, conversations, cost/conversation (messaging). Plus which ad sets/creatives are winning and what was optimised."
     }
   },
-
   "schedule": {
     "run_local_time": "09:10",
     "run_window": "09:00-10:00",
@@ -206,7 +234,6 @@
     "routine_mode": "self-bind to session_011oVDoaa21xaSyfmMVgVUhS (carries the connectors)",
     "_note": "Daily Routine fires 09:10 IST. If a fired run ever reports connectors missing, recreate the Routine from claude.ai -> Routines UI with Meta/Drive/Gmail/Unipile attached (guaranteed)."
   },
-
   "safety": {
     "max_new_ads_per_day_per_adset": 3,
     "max_daily_spend_change_inr": 1000,
@@ -216,6 +243,9 @@
     "creative_push_is_allowed_without_approval": true,
     "confirm_before_pausing_last_active_adset": true,
     "never_change_location_targeting": true,
-    "location_lock": { "Lucknow_adset_120249797872690412": "Uttar Pradesh only", "Chandigarh_adset_120249894252900412": "Punjab only" }
+    "location_lock": {
+      "Lucknow_adset_120249797872690412": "Uttar Pradesh only",
+      "Chandigarh_adset_120249894252900412": "Punjab only"
+    }
   }
 }

@@ -132,6 +132,45 @@
       "placements": "FB+IG",
       "launched": "2026-07-20",
       "note": "New 20-Jul creative batch. Remaining unused Lucknow images queued: 1qgRn8s0wh306Mo9KZA6K0cLFowG7hDw5 (17-Jul reserve), 1IK4Cb7iI4ZedVXz6tywnbqh7yF-SyojM, 1LyLeNVF5J7ilqQyzLKT5Us-7yPInEEtt, 1zPnOxNecehpUWVCI48vvxcxeSH01gr2y (20-Jul batch)."
+    },
+    {
+      "city": "Lucknow",
+      "drive_file_id": "1IK4Cb7iI4ZedVXz6tywnbqh7yF-SyojM",
+      "repo_path": "creatives/lucknow-9.png",
+      "creative_id": "1590221239345469",
+      "ad_id": "120250225623670412",
+      "adset_id": "120250225542880412",
+      "page": "102609998534369 (primary)",
+      "instagram_user_id": "17841448483484680",
+      "placements": "FB+IG",
+      "launched": "2026-07-21",
+      "note": "New ad set B (Lucknow | ImageB) — duplicate of the Lucknow ad set with open UP targeting, to break saturation."
+    },
+    {
+      "city": "Lucknow",
+      "drive_file_id": "1LyLeNVF5J7ilqQyzLKT5Us-7yPInEEtt",
+      "repo_path": "creatives/lucknow-10.png",
+      "creative_id": "1502068971609565",
+      "ad_id": "120250225632310412",
+      "adset_id": "120250225542880412",
+      "page": "102609998534369 (primary)",
+      "instagram_user_id": "17841448483484680",
+      "placements": "FB+IG",
+      "launched": "2026-07-21",
+      "note": "Ad set B."
+    },
+    {
+      "city": "Lucknow",
+      "drive_file_id": "1qgRn8s0wh306Mo9KZA6K0cLFowG7hDw5",
+      "repo_path": "creatives/lucknow-11.png",
+      "creative_id": "886182340809860",
+      "ad_id": "120250225641300412",
+      "adset_id": "120250225542880412",
+      "page": "102609998534369 (primary)",
+      "instagram_user_id": "17841448483484680",
+      "placements": "FB+IG",
+      "launched": "2026-07-21",
+      "note": "Ad set B. Used the 17-Jul reserve image because the 20-Jul image 1zPnOxNecehpUWVCI48vvxcxeSH01gr2y was an EXACT duplicate (md5) of 1IK4Cb (lucknow-9) — skipped it."
     }
   ]
 }
