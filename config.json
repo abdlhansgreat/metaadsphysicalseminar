@@ -258,5 +258,12 @@
       "Lucknow_adset_120249797872690412": "Uttar Pradesh only",
       "Chandigarh_adset_120249894252900412": "Punjab only"
     }
+  },
+  "lead_form_campaign": {
+    "campaign_id": "120250348792540412",
+    "name": "Lucknow | Lead Form",
+    "objective": "OUTCOME_LEADS",
+    "status": "PAUSED shell created 2026-07-27. Instant-form lead-gen campaign. PENDING operator in Ads Manager: (1) accept Lead ToS for page 102609998534369 (currently leadgen_tos_accepted=false); (2) build the Instant Form (Full name, Phone, Email, custom 'Annual turnover' multiple-choice bands; Higher-intent form type) with completion-screen button -> WhatsApp group invite link; (3) create ad set with optimization_goal=LEAD_GENERATION, promoted_object page_id 102609998534369, destination ON_AD, KEEP Uttar Pradesh geo, budget ~₹1,000/day. Then agent loads creatives + verifies geo + adds to daily report.",
+    "notes": "Lead-form leads do NOT hit the landing-page sheet — must be routed to CRM/sheet separately (native CRM / Zapier / CSV). Completion-screen WhatsApp group must be a dedicated leads/attendees group, NOT the internal Seminar Daily Reporting group. WhatsApp group cap 1024 members."
   }
 }
