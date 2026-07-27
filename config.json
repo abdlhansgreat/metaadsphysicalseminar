@@ -1,5 +1,5 @@
 {
-  "_README": "This is the control panel for the daily Meta Ads automation. Fill in every value marked TODO. All money values are in INR (whole rupees unless noted). The daily agent reads THIS file first, every run.",
+  "_README": "AUTOMATION SHUT DOWN 2026-07-27 (operator request). Daily report routine (trig_01U7ZGLKuPk4NbbmGvRgN4MB) DELETED. Health-check routine (trig_017FegECx75r3YR2eTnUeTaZ) already gone. All active ad sets and the main lead campaign PAUSED. No spend running. To restart: re-activate campaign + ad sets in Ads Manager and recreate the Routines.",
   "account": {
     "ad_account_id": "26893427890242195",
     "ad_account_name": "Workshop Ad Account",
