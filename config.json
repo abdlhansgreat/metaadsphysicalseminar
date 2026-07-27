@@ -263,7 +263,17 @@
     "campaign_id": "120250348792540412",
     "name": "Lucknow | Lead Form",
     "objective": "OUTCOME_LEADS",
-    "status": "PAUSED shell created 2026-07-27. Instant-form lead-gen campaign. PENDING operator in Ads Manager: (1) accept Lead ToS for page 102609998534369 (currently leadgen_tos_accepted=false); (2) build the Instant Form (Full name, Phone, Email, custom 'Annual turnover' multiple-choice bands; Higher-intent form type) with completion-screen button -> WhatsApp group invite link; (3) create ad set with optimization_goal=LEAD_GENERATION, promoted_object page_id 102609998534369, destination ON_AD, KEEP Uttar Pradesh geo, budget ~₹1,000/day. Then agent loads creatives + verifies geo + adds to daily report.",
-    "notes": "Lead-form leads do NOT hit the landing-page sheet — must be routed to CRM/sheet separately (native CRM / Zapier / CSV). Completion-screen WhatsApp group must be a dedicated leads/attendees group, NOT the internal Seminar Daily Reporting group. WhatsApp group cap 1024 members."
+    "ad_set_id": "120250348845180412",
+    "existing_ad_id": "120250348845170412",
+    "existing_creative_id": "870896962488154",
+    "lead_form_page_id": "2087950798091932",
+    "status": "PAUSED (CAMPAIGN_PAUSED). One ad live (120250348845170412) built via Ads Manager form builder, using creative 870896962488154 (SIGN_UP, Bihar page 2087950798091932, dummy 'gfgf' headline + 'Lucknow Physical Seminar' body). BLOCKED 2026-07-27: operator asked for 3 more ads (chose 'duplicate existing ad'), but API create-ad returns ToS error subcode 1892181 — BOTH pages have leadgen_tos_accepted=FALSE (page 2087950798091932 AND 102609998534369). Meta blocks even CREATING lead ads via API until the page accepts the Lead Generation ToS at https://www.facebook.com/legal/leadgen/tos. Once operator accepts ToS for page 2087950798091932 and says 'done', agent creates the 3 duplicate ads (reuse creative 870896962488154) in seconds.",
+    "pending_operator": [
+      "Accept Lead Generation ToS for page 2087950798091932 at https://www.facebook.com/legal/leadgen/tos (unblocks API ad creation).",
+      "Confirm the Instant Form's completion-screen button links to a DEDICATED WhatsApp leads group (not the internal Seminar Daily Reporting group).",
+      "Route form leads to CRM/sheet (native CRM / Zapier / CSV) — Instant-form leads do NOT hit the landing-page sheet.",
+      "When ready to spend, activate campaign + ad set (KEEP Uttar Pradesh geo, budget ~₹1,000/day)."
+    ],
+    "notes": "Lead-form leads do NOT hit the landing-page sheet — must be routed to CRM/sheet separately (native CRM / Zapier / CSV). Completion-screen WhatsApp group must be a dedicated leads/attendees group, NOT the internal Seminar Daily Reporting group. WhatsApp group cap 1024 members. Operator's chosen path for the 3 extra ads = duplicate the existing ad (same image + dummy copy, form attached); revisit distinct-image good-copy variants later if a lead_gen_form_id becomes available."
   }
 }
