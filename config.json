@@ -37,7 +37,16 @@
         "city": "Lucknow",
         "locked_region": "Uttar Pradesh (UP)",
         "adset_daily_budget_inr": 1000,
-        "status": "ACTIVE from 2026-07-21 — duplicate of the Lucknow ad set (open UP targeting, geo unchanged), 3 fresh creatives (lucknow-9/10/11). Added to break audience saturation: ₹2,000 on ad set A gave the same leads as ₹1,000. Started ₹1,000/day.",
+        "status": "PAUSED 2026-07-26 — was cannibalizing ad set A (open-UP auction overlap); 7-day avg CPL ₹184 incl a ₹835/0-lead day. Replaced by the Lookalike ad set.",
+        "creatives_folder_id": "1iB_YbZiz-3ms-2pZrOw4T6rmoYZI1sY1"
+      },
+      {
+        "ad_set_id": "120250348260940412",
+        "label": "Lucknow | Lookalike | Image",
+        "city": "Lucknow",
+        "locked_region": "Uttar Pradesh (UP)",
+        "adset_daily_budget_inr": 1000,
+        "status": "ACTIVE from 2026-07-27 — targets the 1% Lookalike (id 120250348195000412) of the Lead-pixel seed, KEEPING Uttar Pradesh geo (duplicated in Ads Manager for geo-safety). 3 reused proven creatives (c9/c10/c11). Fresh audience to get more leads without re-bidding the saturated open-UP pool. Start ₹1,000/day; scale once it proves cheaper than A.",
         "creatives_folder_id": "1iB_YbZiz-3ms-2pZrOw4T6rmoYZI1sY1"
       }
     ],
@@ -47,7 +56,8 @@
     "link_url": "https://lp.ipcstudiogrowth.in/ipc-1/",
     "call_to_action_type": "SEE_DETAILS",
     "_note": "New daily ads are created INSIDE the target ad sets, so they share each ad set's existing ~500 INR/day budget and inherit its targeting. The agent does not add budget without approval.",
-    "_adset_A_note": "Ad set A = 120249797872690412 (Lucknow | Image) at ₹2,000/day. Ad set B = 120250225542880412 (Lucknow | ImageB) at ₹1,000/day — both Uttar Pradesh, open targeting. Campaign is ABO (per-ad-set budgets)."
+    "_adset_A_note": "Ad set A = 120249797872690412 (Lucknow | Image) at ₹2,000/day. Ad set B = 120250225542880412 (Lucknow | ImageB) at ₹1,000/day — both Uttar Pradesh, open targeting. Campaign is ABO (per-ad-set budgets).",
+    "_audiences_note": "Lookalike seed WCA=120250348192700412 (Lead event, Mumbai Pixel 942673368364446, 180d). LOOKALIKE 1%=120250348195000412. Used for ad set 120250348260940412."
   },
   "pages": {
     "primary_page_id": "102609998534369",
